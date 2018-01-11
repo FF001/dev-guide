@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/path/to/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/path/to/error.log-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <MaxHistory>7</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="error" level="error" additivity="false">
+        <appender-ref ref="error" />
+    </logger>
+
+    <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/path/to/info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/path/to/info.log-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <MaxHistory>7</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="info" level="info" additivity="false">
+        <appender-ref ref="info" />
+    </logger>
+    
+    <appender name="default" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/path/to/default.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/path/to/default.log-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <MaxHistory>7</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="default" level="default" additivity="false">
+        <appender-ref ref="default" />
+    </logger>
+
+    <root level="ERROR">
+        <appender-ref ref="default" />
+    </root>
+    
+</configuration>
